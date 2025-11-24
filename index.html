@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+
+
+<div class="wrap">
+<h1>Sudo_ku</h1>
+<div id="menu" class="menu">
+<br>
+   <button id="start" class="menubut">Start</button>
+<br>
+<button id="intro" class="menubut">Backstory</button>
+<br>
+<button id="help" class="menubut">Help</button>
+  </div>
+<div id="board" class="board">
+
+<div class="box box0" id="b0"><div class="cell noSel cell0" id="ad1"></div><div class="cell noSel cell1" id="ad2"></div><div class="cell noSel cell2" id="ad3"></div><div class="cell noSel cell3" id="ad4"></div><div class="cell noSel cell4" id="ad5"></div><div class="cell noSel cell5" id="ad6"></div><div class="cell noSel cell6" id="ad7"></div><div class="cell noSel cell7" id="ad8"></div><div class="cell noSel cell8 " id="ad9"></div></div>
+
+<div class="box box1" id="b1"><div class="cell noSel cell0" id="ae1"></div><div class="cell noSel cell1" id="ae2"></div><div class="cell noSel cell2" id="ae3"></div><div class="cell noSel cell3" id="ae4"></div><div class="cell noSel cell4" id="ae5"></div><div class="cell noSel cell5" id="ae6"></div><div class="cell noSel cell6" id="ae7"></div><div class="cell noSel cell7" id="ae8"></div><div class="cell noSel cell8" id="ae9"></div></div>
+
+<div class="box box2" id="b2"><div class="cell noSel cell0" id="af1"></div><div class="cell noSel cell1" id="af2"></div><div class="cell noSel cell2" id="af3"></div><div class="cell noSel cell3" id="af4"></div><div class="cell noSel cell4" id="af5"></div><div class="cell noSel cell5" id="af6"></div><div class="cell noSel cell6" id="af7"></div><div class="cell noSel cell7" id="af8"></div><div class="cell noSel cell8" id="af9"></div></div>
+  
+<div class="box box3" id="b3"><div class="cell noSel cell0" id="bd1"></div><div class="cell noSel cell1" id="bd2"></div><div class="cell noSel cell2 " id="bd3"></div><div class="cell noSel cell3" id="bd4"></div><div class="cell noSel cell4" id="bd5"></div><div class="cell noSel cell5" id="bd6"></div><div class="cell noSel cell6" id="bd7"></div><div class="cell noSel cell7" id="bd8"></div><div class="cell noSel cell8" id="bd9"></div></div>
+
+<div class="box box4" id="b4"><div class="cell noSel cell0" id="be1"></div><div class="cell noSel cell1" id="be2"></div><div class="cell noSel cell2" id="be3"></div><div class="cell noSel cell3" id="be4"></div><div class="cell noSel cell4" id="be5"></div><div class="cell noSel cell5" id="be6"></div><div class="cell noSel cell6" id="be7"></div><div class="cell noSel cell7" id="be8"></div><div class="cell noSel cell8" id="be9"></div></div>
+
+<div class="box box5" id="b5"><div class="cell noSel cell0" id="bf1"></div><div class="cell noSel cell1" id="bf2"></div><div class="cell noSel cell2" id="bf3"></div><div class="cell noSel cell3" id="bf4"></div><div class="cell noSel cell4" id="bf5"></div><div class="cell noSel cell5" id="bf6"></div><div class="cell noSel cell6" id="bf7"></div><div class="cell noSel cell7" id="bf8"></div><div class="cell noSel cell8" id="bf9"></div></div>
+
+<div class="box box6" id="b6"><div class="cell noSel cell0" id="cd1"></div><div class="cell noSel cell1" id="cd2"></div><div class="cell noSel cell2" id="cd3"></div><div class="cell noSel cell3" id="cd4"></div><div class="cell noSel cell4" id="cd5"></div><div class="cell noSel cell5" id="cd6"></div><div class="cell noSel cell6" id="cd7"></div><div class="cell noSel cell7" id="cd8"></div><div class="cell noSel cell8 " id="cd9"></div></div>
+
+<div class="box box7" id="b7"><div class="cell noSel cell0" id="ce1"></div><div class="cell noSel cell1" id="ce2"></div><div class="cell noSel cell2" id="ce3"></div><div class="cell noSel cell3" id="ce4"></div><div class="cell noSel cell4" id="ce5"></div><div class="cell noSel cell5" id="ce6"></div><div class="cell noSel cell6" id="ce7"></div><div class="cell noSel cell7" id="ce8"></div><div class="cell noSel cell8" id="ce9"></div></div>
+
+<div class="box box8" id="b8"><div class="cell noSel cell0" id="cf1"></div><div class="cell noSel cell1" id="cf2"></div><div class="cell noSel cell2" id="cf3"></div><div class="cell noSel cell3" id="cf4"></div><div class="cell noSel cell4" id="cf5"></div><div class="cell noSel cell5" id="cf6"></div><div class="cell noSel cell6" id="cf7"></div><div class="cell noSel cell7" id="cf8"></div><div class="cell noSel cell8" id="cf9"></div></div>
+  </div>
+<br>
+<div id="nums" class="nums noSel">
+  
+<div id="but1" class="buttonDis">1</div>
+<div id="but2" class="buttonDis">2</div>  
+<div id="but3" class="buttonDis">3</div>
+<div id="but4" class="buttonDis">4</div>    
+<div id="but5" class="buttonDis">5</div>
+<div id="but6" class="buttonDis">6</div>  
+<div id="but7" class="buttonDis">7</div>
+<div id="but8" class="buttonDis">8</div>
+<div id="but9" class="buttonDis">9</div>
+</div>
+<div id="otherbutts" class="otherbutts">
+<div id="delete" class="delete noSel">delete</div>  
+</div>
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>

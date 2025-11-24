@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Sudo ku docs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+th{
+border:2px solid black;
+}
+</style>
+  </head>
+    
+  <body>
+<h1>Sudo ku documentation</h1>
+
+<ol id="contents">
+<li><a href="#desc">description</a></li>
+<li><a href="#datamod">data modeling</a>
+<ul>
+<li><a href="#layout">board layout</a></li>
+<li> <a href="#datatype">Data Type</a></li>
+</ul>
+</li>
+</ol>
+
+<h3> description</h3>
+<p>A classic puzzle game played inside a web browser.</p>
+
+
+<h3 id="datamod">Data modeling</h3>
+
+<h4 id="layout">Board Layout</h4>
+<p> the game is played on a 9 by 9 grid this mean 81 indavidual cells. Each cell is a div with a unique Id tag that gives key information about its location within the grid.<br>
+given just this id we need to know three things. what box or subgrid is it in, what row is it in and what column is it in?<br>
+this means each id will consist of three characters that can be extrapolated to reviel the above information.<br> 
+the first 2 characters will signify which box the cell is located within.<br>
+the first character can only be one of three letters a, b and c each representing the row of the containing box.<br>
+the second character can only be one of three letters d, e, and f each representing which column the containing box is in.<br>
+a visual example is given below as to how the grid is subdivided.  <br>
+ 
+
+<table>
+	<tr>
+		<th>AD</th>
+		<th>AE</th>
+		<th>AF</th>
+</tr>
+	<tr>
+		<th>BD</th>
+		<th>BE</th>
+		<th>BF</th>
+</tr>
+	<tr>
+		<th>CD</th>
+		<th>CE</th>
+		<th>CF</th>
+</tr>
+</table>
+
+<p> the final character is a number representing the specific cell within that subgrid going left to right top to bottom.<br>
+an example would ad1 which represents the top most call on the far left.</p>
+
+<h4 id="datatype">Data Type</h4>
+<p>the other piece of information we need to keep track of is the containing number within each cell.<br>
+In this case we use 0 to represent an empty cell so the contenets will only ever be a sinlge digit.<br>
+the result of this is 81 key value pairs that will be constantly updated.<br>
+because of these needs a hashmap is the ideal datastructure.<br>
+It is simply named map and placed in the global scope.
+</p>
+</body>
+</html>
