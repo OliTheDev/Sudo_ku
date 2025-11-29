@@ -177,8 +177,10 @@ map.set(x, input)
 thething.innerHTML = input
 thething.classList.remove('empty')
 thething.classList.add('filled')
-empties = empties - 1
-console.log(empties)
+if(thething.classList.contains("selectedFull") == true){
+console.log("alreadyfull")
+}else{empties = empties - 1}
+
 
 if(empties == 0){
 console.log("you win")
@@ -192,8 +194,16 @@ console.log("you win")
 function refresh(x) {
   let butlist = document.querySelectorAll('.button');
   butlist.forEach((el) => {el.classList.remove('button');
-//el.removeEventListener("click", clicker)
-                  el.classList.add('buttonDis')}) 
+                  el.classList.add('buttonDis')
+if(el.hasAttribute("data-listener") && el.getAttribute("data-listener") == "clicker"){
+let newthing = el.cloneNode(true); 
+
+    el.remove()
+let input = newthing.innerHTML
+newthing.removeAttribute("data-listener")
+    document.getElementById("nums").appendChild(newthing)
+}
+}) 
 let old = document.querySelectorAll('.selected')
 old.forEach((obj) => {
 obj.classList.remove('selected')
@@ -207,22 +217,50 @@ obj.classList.remove('selectedFull')
 
 }
 
+
+
+function buttonthing(x) {
+  let butlist = document.querySelectorAll('.buttonDis')  
+  
+ 
+  butlist.forEach((el) => {
+  
+    el.classList.remove('buttonDis');
+      el.classList.add('button') 
+      let newthing = el.cloneNode(true); 
+
+    el.remove()
+let input = newthing.innerHTML
+
+    document.getElementById("nums").appendChild(newthing)
+newthing.setAttribute('data-listener', 'clicker')     
+               newthing.addEventListener("click", function clicker(stuff) {isAble(input,x) }, {once:true})
+                        } )
+
+}
+
+
   function select(x) {
 let elem = document.getElementById(x)
 refresh()
+
 if(elem.classList.contains("placed")){
 refresh()
 return
 }
-
+// this sets up the delete button 
 if(elem.classList.contains("filled")){
+elem.classList.remove("filled")
 let  delbut = document.getElementById("delete")
 delbut.classList.remove("deletedis")
 delbut.classList.add("delete")
-delbut.addEventListener("click", function getrid(){map.set(x,0); elem.innerHTML = 0; refresh(); elem.classList.add("empty")  },{once:true})
+delbut.addEventListener("click", function getrid(){console.log("1",empties)
+map.set(x,0); elem.innerHTML = 0; refresh(); elem.classList.add("empty"); empties = empties + 1  
+console.log("2",empties)
+},{once:true})
 }
 
-//clear all old selected cells . this is not a duplacit of the refresh function and has specific use case in preventing the phantom select bug.
+//clear all old selected cells . 
 
 /*
 let old = document.querySelectorAll('.selected')
@@ -249,21 +287,7 @@ document.getElementById(x).classList.add('selectedFull')
 
 
 //set up number select buttons
-  let butlist = document.querySelectorAll('.buttonDis')  
-  
- 
-  butlist.forEach((el) => {
-  
-    el.classList.remove('buttonDis');
-      el.classList.add('button') 
-      let newthing = el.cloneNode(true); 
-
-    el.remove()
-let input = newthing.innerHTML
-
-    document.getElementById("nums").appendChild(newthing)
-                    newthing.addEventListener("click", function clicker(stuff) {isAble(input,x) }, {once:true})
-                        } )
+buttonthing(x)
  //refresh(x)
 
  }
@@ -295,14 +319,35 @@ function addListen(cell){
 
 const wrapper = document.getElementById("wrapper")
 const boardwrap = document.getElementById("board")
+const start = document.getElementById("start")
+const menu = document.getElementById("menu")
 
-function newGame() {
+function goback(){
+boardwrap.style.display = "none"
+menu.style.display = "flex"
+  document.getElementById("nums").style.display = "none"
+ document.getElementById("otherbutts").style.display = "none"
+start.removeEventListener("click", objwrap)
+start.addEventListener("click", goforward)
+start.innerHTML = "Resume"
+}
+
+function goforward() {
 boardwrap.style.display = "grid"
-document.getElementById("menu").style.display = "none"
+menu.style.display = "none"
+  document.getElementById("nums").style.display = "grid"
+ document.getElementById("otherbutts").style.display = "grid" 
+
+}
+
+let objwrap = function newGame() {
+boardwrap.style.display = "grid"
+menu.style.display = "none"
   document.getElementById("nums").style.display = "grid"
  document.getElementById("otherbutts").style.display = "grid" 
    fillBoard()
-  
+document.getElementById("mainmenu").addEventListener("click", goback)  
   }
 
-document.getElementById("start").addEventListener("click", function(){ newGame()})
+
+start.addEventListener("click", objwrap)
