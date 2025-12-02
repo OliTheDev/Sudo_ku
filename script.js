@@ -254,9 +254,8 @@ elem.classList.remove("filled")
 let  delbut = document.getElementById("delete")
 delbut.classList.remove("deletedis")
 delbut.classList.add("delete")
-delbut.addEventListener("click", function getrid(){console.log("1",empties)
+delbut.addEventListener("click", function getrid(){delbut.classList.remove('delete'); delbut.classList.add('deletedis')
 map.set(x,0); elem.innerHTML = 0; refresh(); elem.classList.add("empty"); empties = empties + 1  
-console.log("2",empties)
 },{once:true})
 }
 
@@ -320,17 +319,10 @@ function addListen(cell){
 const wrapper = document.getElementById("wrapper")
 const boardwrap = document.getElementById("board")
 const start = document.getElementById("start")
+const resume = document.getElementById("resume")
 const menu = document.getElementById("menu")
 
-function goback(){
-boardwrap.style.display = "none"
-menu.style.display = "flex"
-  document.getElementById("nums").style.display = "none"
- document.getElementById("otherbutts").style.display = "none"
-start.removeEventListener("click", objwrap)
-start.addEventListener("click", goforward)
-start.innerHTML = "Resume"
-}
+
 
 function goforward() {
 boardwrap.style.display = "grid"
@@ -340,12 +332,25 @@ menu.style.display = "none"
 
 }
 
+
+function goback(){
+boardwrap.style.display = "none"
+menu.style.display = "flex"
+  document.getElementById("nums").style.display = "none"
+ document.getElementById("otherbutts").style.display = "none"
+resume.style.display = "block"
+resume.addEventListener("click", goforward)
+
+}
+
 let objwrap = function newGame() {
 boardwrap.style.display = "grid"
 menu.style.display = "none"
   document.getElementById("nums").style.display = "grid"
  document.getElementById("otherbutts").style.display = "grid" 
-   fillBoard()
+map.clear()  
+empties = 0 
+fillBoard()
 document.getElementById("mainmenu").addEventListener("click", goback)  
   }
 
