@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Sudo ku docs</title>
+    <title>Sudo_ku docs</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 th{
@@ -13,33 +13,75 @@ border:2px solid black;
   </head>
     
   <body>
-<h1>Sudo ku documentation</h1>
+<h1>Sudo_ku documentation</h1>
 
 <ol id="contents">
 <li><a href="#desc">description</a></li>
+<li><a href="#terms">termenology</li>
 <li><a href="#datamod">data modeling</a>
-<ul>
-<li><a href="#layout">board layout</a></li>
-<li> <a href="#datatype">Data Type</a></li>
-</ul>
+<ol>
+<li><a href="#map">map</a></li>
+<li> <a href="#layout">data structures</a></li>
+<li><a href="#board">board</a></li>
+</ol>
 </li>
 </ol>
 
-<h3> description</h3>
-<p>A classic puzzle game played inside a web browser.</p>
+<h3 id="desc"> description</h3>
+<p>a humorus take on the classic puzzle game. displayed in classic terminal green.
+if you are not familiar with how the game works please see ______
+</p>
+
+<h3 id="terms">termanology</h3>
+
+<ol>
+<li>cell = a single point on the grid.</li>
+<li>box = a sub grid of the grid containing 9 cells</li>
+<li>grid = the entire board consisting of 81 cell divided into 9 boxes</li>
+</ol>
 
 
-<h3 id="datamod">Data modeling</h3>
 
-<h4 id="layout">Board Layout</h4>
-<p> the game is played on a 9 by 9 grid this mean 81 indavidual cells. Each cell is a div with a unique Id tag that gives key information about its location within the grid.<br>
-given just this id we need to know three things. <ul><li>what box or subgrid it's in</li><li> what row it's in</li> <li>what column it's in?</li></ul><br>
+
+<h3 id="datamod">1.Data</h3>
+
+<h4 id="map">1.1 map</h4>
+<table>
+ <tr>
+  <th>type</th> <th>Map() object</th> 
+ <tr>  
+  <th>scope</th> <th>global</th>
+ </tr>  
+</table>
+<p>this serves as the source of truth for what each cell contains.
+the enclosed key/value pairs represent the current game state.
+each key corrisponds to an ID tag for the HTML element representing that cell on the board.
+these ID have specific stucure that encapsulates cymantic data explained in the ID structures explained in section 1.1.1 
+
+</p>
+<table>
+<th>contents</th><th>type</th><th>cymantics</th>
+ </tr>
+<tr>
+<th>key</th><th>string</th><th>corrisponds with an ID tag for a cell</th>
+</tr>
+<tr>
+<th>value</th><th>number</th><th>contents of cell with 0 being empty</th>
+</tr>
+</table>
+<p>
+
+ 
+
+
+
+<h4 id="layout">1.1.1 ID structure</h4>
+given just an elements id we need to know three things. <ul><li>what box it's in</li><li> what row it's in</li> <li>what column it's in?</li></ul><br>
 this means each id will consist of three characters that can be extrapolated to reviel the above information.<br> 
 the first 2 characters will signify which box the cell is located within.<br>
 the first character can only be one of three letters a, b and c each representing the row of the containing box.<br>
 the second character can only be one of three letters d, e, and f each representing which column the containing box is in.<br>
 a visual example is given below as to how the grid is subdivided.  <br>
- 
 
 <table>
 	<tr>
@@ -83,13 +125,39 @@ so the AD subgrid would look like this</p>
 </table>
 
 
+<h4 id="board">1.2 board</h4>
 
-<h4 id="datatype">Data Type</h4>
-<p>the other piece of information we need to keep track of is the containing number within each cell.<br>
+<table>
+ <tr>
+  <th>type</th> <th>Vector/nested array</th> 
+ <tr>  
+  <th>scope</th> <th>global</th>
+ </tr>  
+<tr>
+ <th>content type</th> <th>number </th>
+</table>
+
+<p>this is the starting point for the game. 
+
+
+<h4 id="datatype">Data types</h4>
+<p>the game is played on a 9 by 9 grid this mean 81 indavidual cells. Each cell will have a containing value
+the other piece of information we need to keep track of is the containing number within each cell.<br>
 In this case we use 0 to represent an empty cell so the contenets will only ever be a sinlge digit.<br>
 the result of this is 81 key value pairs that will be constantly updated.<br>
 because of these needs a hashmap is the ideal datastructure.<br>
 It is simply named map and placed in the global scope.
 </p>
+
+
+
+
+the game is played by adding numbers to a grid. some cells in this grid already have number that cannot be changed. when a number is added there are three<br>
+requirements it must satify. the number being added my not appear anywhere else in the same row. the number being added my not appear anywhere else in the same column<br>
+and lastly the number being added my not appear anywhere else in the same subgrid. the game is finished when all the cells of the grid are filled.  
+
+there are three layers to every project. data, logic and presentation. I think its important to go through them in tha order. so
+
 </body>
 </html>
+
