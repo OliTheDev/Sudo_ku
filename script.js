@@ -14,6 +14,9 @@ const board = [
 
 let empties =  0
 
+const storetest = JSON.stringify(board)
+locaolStorage.setItem("test" , storetest)
+
 function sort(num,axis,array) {
 const xAx = axis
 let yAx = "d"
